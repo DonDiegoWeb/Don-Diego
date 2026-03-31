@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Don Diego – Productos Naturales</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
@@ -10,144 +10,60 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--brown-dark);overflow-x:hidden;}
-  header{position:relative;background:var(--green-deep);min-height:100vh;display:flex;flex-direction:column;overflow:hidden;}
-  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(164,200,154,.18) 0%,transparent 60%),radial-gradient(ellipse at 10% 80%,rgba(212,168,67,.12) 0%,transparent 50%),linear-gradient(160deg,#2d4a2d 0%,#3a5a3a 50%,#2a3d2a 100%);}
-  .leaf{position:absolute;opacity:.07;font-size:200px;user-select:none;animation:sway 8s ease-in-out infinite;}
-  .leaf-1{top:-40px;right:-30px;transform:rotate(30deg);}
-  .leaf-2{bottom:-60px;left:-40px;transform:rotate(-20deg);font-size:280px;animation-delay:3s;}
-  .leaf-3{top:40%;left:55%;transform:rotate(60deg);font-size:120px;animation-delay:5s;}
-  @keyframes sway{0%,100%{transform:rotate(var(--r,30deg)) scale(1);}50%{transform:rotate(calc(var(--r,30deg) + 5deg)) scale(1.03);}}
-  nav{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:24px 60px;}
-  .logo{font-family:'Playfair Display',serif;color:var(--cream);font-size:1.6rem;font-weight:700;letter-spacing:1px;text-decoration:none;}
+  
+  /* Header y Nav */
+  header{position:relative;background:var(--green-deep);min-height:60vh;display:flex;flex-direction:column;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#2d4a2d 0%,#3a5a3a 50%,#2a3d2a 100%);}
+  nav{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;}
+  .logo{font-family:'Playfair Display',serif;color:var(--cream);font-size:1.6rem;font-weight:700;text-decoration:none;}
   .logo span{color:var(--accent);font-style:italic;}
-  .nav-links{display:flex;gap:36px;list-style:none;}
-  .nav-links a{color:rgba(249,243,232,.8);text-decoration:none;font-size:.9rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;transition:color .3s;}
-  .nav-links a:hover{color:var(--accent);}
-  .hero-content{position:relative;z-index:5;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;animation:fadeUp 1s ease both;}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
-  .hero-badge{background:rgba(212,168,67,.2);border:1px solid var(--accent);color:var(--accent);font-size:.75rem;letter-spacing:3px;text-transform:uppercase;padding:6px 20px;border-radius:40px;margin-bottom:28px;font-weight:700;}
-  .hero-title{font-family:'Playfair Display',serif;color:var(--cream);font-size:clamp(3rem,8vw,6.5rem);line-height:1.05;margin-bottom:12px;}
-  .hero-title em{color:var(--accent);font-style:italic;}
-  .hero-sub{color:rgba(249,243,232,.7);font-size:clamp(1rem,2vw,1.2rem);font-weight:300;letter-spacing:1px;margin-bottom:48px;max-width:500px;}
-  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
-  .btn-primary{background:var(--accent);color:var(--brown-dark);padding:16px 36px;border-radius:4px;text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;border:2px solid var(--accent);}
-  .btn-primary:hover{background:transparent;color:var(--accent);}
-  .btn-secondary{border:2px solid rgba(249,243,232,.4);color:var(--cream);padding:16px 36px;border-radius:4px;text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;}
-  .btn-secondary:hover{border-color:var(--cream);background:rgba(249,243,232,.1);}
-  .hero-wave{position:absolute;bottom:-2px;left:0;width:100%;z-index:5;}
-  .features{background:var(--brown-dark);display:flex;justify-content:center;flex-wrap:wrap;}
-  .feature-item{display:flex;align-items:center;gap:12px;padding:22px 40px;border-right:1px solid rgba(249,243,232,.1);color:var(--cream);font-size:.85rem;letter-spacing:1px;text-transform:uppercase;font-weight:700;}
-  .feature-item:last-child{border-right:none;}
-
-  /* PDF */
- /* NUEVO ESTILO PARA EL VISOR PDF */
+  .hero-content{position:relative;z-index:5;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;}
+  .hero-title{font-family:'Playfair Display',serif;color:var(--cream);font-size:clamp(2.5rem,5vw,4rem);line-height:1.1;}
+  
+  /* Sección Catálogo */
+  #productos{background:var(--white);padding:40px 0;}
+  .inner{max-width:1100px;margin:0 auto;padding:0 20px;}
+  .section-title{text-align:center;font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:20px;}
+  
   .pdf-wrapper {
-    border: 2px solid rgba(59,42,26,.12);
-    border-radius: 10px;
+    position: relative;
+    border: 2px solid var(--brown-light);
+    border-radius: 12px;
     overflow: hidden;
-    background: #fff;
-    box-shadow: 0 6px 30px rgba(59,42,26,0.15);
-    margin-bottom: 40px;
-  }
-  .pdf-toolbar {
-    background: var(--green-deep);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .pdf-toolbar span {
-    color: var(--cream);
-    font-size: .8rem;
-    font-weight: 700;
-  }
-  /* Esto controla el tamaño en la computadora */
-  .pdf-container {
-    width: 100%;
-    height: 750px; 
-  }
-  .pdf-view-element {
-    width: 100%;
-    height: 100%;
-    display: block;
+    background: #eee;
+    height: 800px; /* Altura en PC */
   }
 
-  /* AJUSTE PARA EL CELULAR */
+  /* Botón flotante solo para el visor en móvil */
+  .order-float-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 100;
+    display: none;
+  }
+
+  /* Formulario Pedido */
+  #pedido{background:var(--cream);padding:60px 0;}
+  .order-form{background:var(--white);border-radius:12px;padding:30px;box-shadow:0 10px 30px var(--shadow);max-width:600px;margin:0 auto;}
+  .form-group{margin-bottom:15px;}
+  .form-group label{display:block;font-weight:bold;margin-bottom:5px;font-size:0.8rem;text-transform:uppercase;}
+  .form-group input, .form-group textarea, .form-group select{width:100%;padding:12px;border:1px solid #ccc;border-radius:6px;font-family:inherit;}
+  .btn-submit{width:100%;background:#25D366;color:white;border:none;padding:15px;border-radius:6px;font-weight:bold;cursor:pointer;font-size:1rem;}
+
+  /* Responsive Móvil */
   @media(max-width: 900px){
-    .pdf-container {
-      height: 80vh; /* Altura grande en el celu */
-    }
-    #productos .inner {
-      padding: 0; /* Aprovecha todo el ancho del celu */
-    }
-    .pdf-wrapper {
-      margin: 0;
-      border-radius: 0;
-      border-left: none;
-      border-right: none;
-    }
-  }
-
-  /* PEDIDO */
-  #pedido{background:var(--cream);padding:100px 0;}
-  #pedido .inner{max-width:1300px;margin:0 auto;padding:0 60px;}
-  .order-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
-  .oi-item{display:flex;gap:16px;margin-bottom:28px;align-items:flex-start;}
-  .oi-icon{width:48px;height:48px;background:var(--green-deep);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
-  .oi-text h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:4px;color:var(--brown-dark);}
-  .oi-text p{font-size:.88rem;color:#7a6a5a;line-height:1.5;}
-  .order-form{background:var(--white);border-radius:12px;padding:44px;box-shadow:0 10px 50px var(--shadow);}
-  .order-form h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--brown-dark);margin-bottom:28px;}
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  .form-group{margin-bottom:18px;}
-  .form-group label{display:block;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown-mid);font-weight:700;margin-bottom:8px;}
-  .form-group input,.form-group textarea,.form-group select{width:100%;padding:13px 16px;border:2px solid rgba(59,42,26,.12);border-radius:6px;font-family:'Lato',sans-serif;font-size:.92rem;color:var(--brown-dark);background:var(--cream);transition:border .2s;outline:none;}
-  .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--green-mid);background:var(--white);}
-  .form-group textarea{resize:vertical;min-height:140px;}
-  .btn-submit{width:100%;background:#25D366;color:#fff;border:none;padding:16px;border-radius:6px;font-family:'Lato',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .3s;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:10px;}
-  .btn-submit:hover{background:#1ebe59;transform:translateY(-2px);}
-  .success-msg{display:none;text-align:center;padding:28px;background:#e8f5e0;border-radius:8px;margin-top:20px;border:2px solid var(--green-light);}
-  .success-msg .sm-icon{font-size:2.5rem;margin-bottom:10px;}
-  .success-msg p{color:var(--green-deep);font-weight:700;font-size:1rem;}
-
-  /* NOSOTROS */
-  #nosotros{background:var(--green-deep);padding:100px 0;position:relative;overflow:hidden;}
-  #nosotros::before{content:'🌿';position:absolute;top:-40px;right:-40px;font-size:300px;opacity:.05;}
-  #nosotros .inner{max-width:1300px;margin:0 auto;padding:0 60px;}
-  #nosotros .section-label{color:var(--green-light);}
-  #nosotros .section-title{color:var(--cream);}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-  .about-text{color:rgba(249,243,232,.8);font-size:1rem;line-height:1.9;}
-  .about-text p{margin-bottom:20px;}
-  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-  .stat-card{background:rgba(249,243,232,.07);border:1px solid rgba(249,243,232,.15);border-radius:8px;padding:28px 24px;text-align:center;}
-  .stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;color:var(--accent);display:block;line-height:1;margin-bottom:6px;}
-  .stat-label{color:rgba(249,243,232,.7);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;}
-
-  footer{background:var(--brown-dark);padding:60px;text-align:center;}
-  .footer-logo{font-family:'Playfair Display',serif;color:var(--cream);font-size:2rem;margin-bottom:16px;display:block;}
-  .footer-logo span{color:var(--accent);font-style:italic;}
-  .footer-tagline{color:rgba(249,243,232,.5);font-size:.85rem;margin-bottom:32px;letter-spacing:1px;}
-  .footer-divider{border:none;border-top:1px solid rgba(249,243,232,.1);margin:28px auto;max-width:200px;}
-  .footer-copy{color:rgba(249,243,232,.4);font-size:.78rem;letter-spacing:1px;}
-  .wa-float{position:fixed;bottom:28px;right:28px;background:#25D366;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:998;box-shadow:0 6px 24px rgba(37,211,102,.5);transition:all .3s;animation:waPulse 3s ease-in-out infinite;}
-  .wa-float:hover{transform:scale(1.12);background:#1ebe59;}
-  @keyframes waPulse{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.5);}50%{box-shadow:0 6px 32px rgba(37,211,102,.8);}}
-  .wa-float svg{width:30px;height:30px;fill:#fff;}
-  .hamburger{display:none;background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer;}
-
-  @media(max-width:900px){
-    nav{padding:20px 24px;}
-    .nav-links{display:none;}
-    .hamburger{display:block;}
-    #productos .inner{padding:0 16px;}
-    #pedido .inner,#nosotros .inner{padding:0 24px;}
-    .order-grid,.about-grid{grid-template-columns:1fr;}
-    .form-row{grid-template-columns:1fr;}
-    .order-form{padding:28px 20px;}
-    footer{padding:40px 24px;}
-    .features{display:none;}
-    .pdf-embed{height:500px;}
+    nav{padding:15px 20px;}
+    .pdf-wrapper { height: 75vh; margin: 0 -10px; border-radius: 0; border-left:none; border-right:none; }
+    .order-float-btn { display: block; }
+    .order-form { padding: 20px; }
   }
 </style>
 </head>
@@ -155,170 +71,68 @@
 
 <header>
   <div class="hero-bg"></div>
-  <div class="leaf leaf-1">🌿</div>
-  <div class="leaf leaf-2">🍃</div>
-  <div class="leaf leaf-3">🌱</div>
-  <nav>
-    <a href="#" class="logo">Don <span>Diego</span></a>
-    <ul class="nav-links">
-      <li><a href="#productos">Productos</a></li>
-      <li><a href="#pedido">Cómo pedir</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-    </ul>
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-  </nav>
+  <nav><a href="#" class="logo">Don <span>Diego</span></a></nav>
   <div class="hero-content">
-    <div class="hero-badge">🌱 Lista de precios vigente desde 18/03/2026</div>
-    <h1 class="hero-title">La naturaleza<br>en tu <em>mesa</em></h1>
-    <p class="hero-sub">Más de 1.000 productos naturales, orgánicos y saludables. Directo al precio de lista.</p>
-    <div class="hero-actions">
-      <a href="#productos" class="btn-primary">Ver Productos</a>
-      <a href="#pedido" class="btn-secondary">¿Cómo pedir?</a>
-    </div>
+    <h1 class="hero-title">Nuestra lista de <em>precios</em></h1>
+    <p style="color:var(--cream); opacity:0.8; margin-top:10px;">Vigente desde 18/03/2026</p>
   </div>
-  <svg class="hero-wave" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path d="M0,60 C360,0 1080,90 1440,30 L1440,80 L0,80 Z" fill="#f7f2e8"/>
-  </svg>
 </header>
 
-<div class="features">
-  <div class="feature-item"><span>🌿</span> +1000 Productos</div>
-  <div class="feature-item"><span>🚚</span> Envío a domicilio</div>
-  <div class="feature-item"><span>💬</span> Atención por WhatsApp</div>
-  <div class="feature-item"><span>✅</span> Precios actualizados</div>
-</div>
-
-data="lista.pdf#toolbar=0&navpanes=0" 
-          type="application/pdf" 
-          class="pdf-view-element">
-          <div class="pdf-fallback-msg">
-            <p>Para ver los precios actualizados:</p>
-            <a href="lista.pdf" target="_blank" class="btn-primary">Ver Catálogo en Pantalla Completa</a>
-          </div>
-        </object>
-      </div>
+<section id="productos">
+  <div class="inner">
+    <h2 class="section-title">Elegí tus productos</h2>
+    <div class="pdf-wrapper">
+      <a href="#pedido" class="order-float-btn">📝 PEDIR AHORA</a>
+      <object data="lista.pdf" type="application/pdf" width="100%" height="100%">
+        <div style="padding:40px; text-align:center;">
+          <p>Tu celular requiere descargar la lista para verla:</p>
+          <a href="lista.pdf" class="btn-submit" style="display:inline-block; margin-top:20px; text-decoration:none;">Descargar Catálogo PDF</a>
+        </div>
+      </object>
     </div>
   </div>
 </section>
 
 <section id="pedido">
   <div class="inner">
-    <p class="section-label">Es fácil y rápido</p>
-    <h2 class="section-title">¿Cómo hacer tu <span>Pedido</span>?</h2>
-    <div class="order-grid">
-      <div class="order-info">
-        <div class="oi-item"><div class="oi-icon">📄</div><div class="oi-text"><h4>1. Revisá la lista de precios</h4><p>Navegá el PDF con todos nuestros productos y anotá los que querés pedir.</p></div></div>
-        <div class="oi-item"><div class="oi-icon">📋</div><div class="oi-text"><h4>2. Completá el formulario</h4><p>Ingresá tu nombre, teléfono y detallá tu pedido con los productos que elegiste.</p></div></div>
-        <div class="oi-item"><div class="oi-icon">💬</div><div class="oi-text"><h4>3. Enviá por WhatsApp</h4><p>Con un clic, tu pedido llega a nuestro WhatsApp. Te confirmamos disponibilidad y coordinamos la entrega.</p></div></div>
-        <div class="oi-item"><div class="oi-icon">💳</div><div class="oi-text"><h4>Formas de pago</h4><p>Efectivo, transferencia bancaria o MercadoPago. ¡Como prefieras!</p></div></div>
+    <div class="order-form">
+      <h3 style="margin-bottom:20px; text-align:center;">Detalla tu pedido aquí</h3>
+      <div class="form-group"><label>Nombre y Apellido *</label><input type="text" id="nombre" placeholder="Juan Pérez"></div>
+      <div class="form-group"><label>WhatsApp *</label><input type="tel" id="tel" placeholder="341..."></div>
+      <div class="form-group">
+        <label>Entrega</label>
+        <select id="entrega"><option>Retiro en tienda</option><option>Envío a domicilio</option></select>
       </div>
-      <div class="order-form">
-        <h3>Hacé tu pedido 🌿</h3>
-        <div class="form-row">
-          <div class="form-group"><label>Nombre *</label><input type="text" id="nombre" placeholder="Tu nombre"></div>
-          <div class="form-group"><label>Apellido *</label><input type="text" id="apellido" placeholder="Tu apellido"></div>
-        </div>
-        <div class="form-group"><label>Teléfono / WhatsApp *</label><input type="tel" id="telefono" placeholder="Ej: 341 555-1234"></div>
-        <div class="form-group"><label>Email (opcional)</label><input type="email" id="email" placeholder="tucorreo@email.com"></div>
-        <div class="form-group">
-          <label>Tipo de entrega</label>
-          <select id="entrega" onchange="toggleDir()">
-            <option value="">Seleccioná una opción</option>
-            <option value="Envío a domicilio">Envío a domicilio</option>
-            <option value="Retiro en tienda">Retiro en tienda</option>
-          </select>
-        </div>
-        <div class="form-group" id="dirGroup" style="display:none">
-          <label>Dirección de entrega</label>
-          <input type="text" id="direccion" placeholder="Calle, número, ciudad">
-        </div>
-        <div class="form-group">
-          <label>Tu pedido *</label>
-          <textarea id="pedidoTexto" placeholder="Ej:&#10;- Arroz integral x2&#10;- Aceite de coco x1&#10;- Lentejas 500g x3&#10;..."></textarea>
-        </div>
-        <button class="btn-submit" onclick="enviarPedido()">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Enviar pedido por WhatsApp
-        </button>
-        <div class="success-msg" id="successMsg">
-          <div class="sm-icon">✅</div>
-          <p>¡Pedido enviado! Te contactamos en breve para confirmar. 🌿</p>
-        </div>
+      <div class="form-group"><label>¿Qué productos llevás? *</label>
+        <textarea id="lista_pedido" rows="6" placeholder="Ej: 2 Aceites de coco, 1kg de Almendras..."></textarea>
       </div>
+      <button class="btn-submit" onclick="enviarWA()">ENVIAR POR WHATSAPP 💬</button>
     </div>
   </div>
 </section>
 
-<section id="nosotros">
-  <div class="inner">
-    <p class="section-label">Nuestra historia</p>
-    <h2 class="section-title">Por qué <span style="color:var(--accent)">Don Diego</span></h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>Don Diego nació del amor por la naturaleza y la convicción de que los remedios más poderosos los ofrece la tierra. Trabajamos con los mejores proveedores para traerte una variedad enorme de productos naturales, orgánicos y saludables.</p>
-        <p>Aceites, harinas, legumbres, semillas, hierbas medicinales, frutos secos, suplementos, yerba, té y mucho más. Todo en un solo lugar, con precios actualizados y atención personalizada.</p>
-        <p>Porque la salud no es un lujo — es un derecho, y en Don Diego hacemos todo lo posible para que esté al alcance de todos.</p>
-      </div>
-      <div class="about-stats">
-        <div class="stat-card"><span class="stat-num">+1300</span><span class="stat-label">Productos</span></div>
-        <div class="stat-card"><span class="stat-num">40+</span><span class="stat-label">Rubros</span></div>
-        <div class="stat-card"><span class="stat-num">100%</span><span class="stat-label">Natural</span></div>
-        <div class="stat-card"><span class="stat-num">♡</span><span class="stat-label">Con amor local</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span class="footer-logo">Don <span>Diego</span></span>
-  <p class="footer-tagline">Productos naturales · Para tu bienestar</p>
-  <hr class="footer-divider">
-  <p class="footer-copy">© 2026 Don Diego Productos Naturales · Lista de precios vigente desde 18/03/2026</p>
+<footer style="background:var(--brown-dark); padding:40px; text-align:center; color:white; font-size:0.8rem;">
+  <p>© 2026 Don Diego Productos Naturales</p>
 </footer>
 
-<a href="https://wa.me/5493413000000?text=Hola%20Don%20Diego!%20Quiero%20hacer%20un%20pedido%20%F0%9F%98%8A" target="_blank" class="wa-float" title="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-</a>
-
 <script>
-const WA = '5493413000000'; // ← Reemplazá con tu número real
+function enviarWA() {
+  const n = document.getElementById('nombre').value;
+  const t = document.getElementById('tel').value;
+  const e = document.getElementById('entrega').value;
+  const p = document.getElementById('lista_pedido').value;
+  
+  if(!n || !t || !p) { alert("Completá los campos con asterisco (*)"); return; }
 
-function enviarPedido(){
-  const n  = document.getElementById('nombre').value.trim();
-  const a  = document.getElementById('apellido').value.trim();
-  const t  = document.getElementById('telefono').value.trim();
-  const pt = document.getElementById('pedidoTexto').value.trim();
-  if(!n || !a || !t){ alert('⚠️ Completá nombre, apellido y teléfono'); return; }
-  if(!pt){ alert('⚠️ Escribí los productos que querés pedir'); return; }
-  const e  = document.getElementById('entrega').value;
-  const d  = document.getElementById('direccion').value.trim();
-  const em = document.getElementById('email').value.trim();
   const msg = encodeURIComponent(
-    `¡Hola Don Diego! 👋 Quiero hacer el siguiente pedido:\n\n`+
-    `👤 *${n} ${a}*\n📱 ${t}`+
-    (em ? `\n📧 ${em}` : '')+
-    (e  ? `\n🚚 ${e}`  : '')+
-    (d  ? `\n📍 ${d}`  : '')+
-    `\n\n🗒️ *Pedido:*\n${pt}`+
-    `\n\nLista de precios vigente 18/03/2026. ¡Gracias! 🌿`
+    `*NUEVO PEDIDO - DON DIEGO*\n\n` +
+    `👤 *Cliente:* ${n}\n` +
+    `📱 *Tel:* ${t}\n` +
+    `🚚 *Entrega:* ${e}\n\n` +
+    `📝 *Pedido:* \n${p}`
   );
-  window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
-  document.getElementById('successMsg').style.display = 'block';
-  setTimeout(()=>{ document.getElementById('successMsg').style.display='none'; }, 5000);
-}
-
-function toggleDir(){
-  document.getElementById('dirGroup').style.display =
-    document.getElementById('entrega').value === 'Envío a domicilio' ? 'block' : 'none';
-}
-
-function toggleMenu(){
-  const nav = document.querySelector('.nav-links');
-  if(nav.style.display === 'flex'){
-    nav.style.cssText = '';
-  } else {
-    nav.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:var(--green-deep);padding:24px;gap:20px;z-index:50;';
-  }
+  
+  window.open(`https://wa.me/5493413000000?text=${msg}`);
 }
 </script>
 </body>
