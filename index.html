@@ -40,20 +40,53 @@
   .feature-item:last-child{border-right:none;}
 
   /* PDF */
-  #productos{background:var(--white);padding:80px 0;}
-  #productos .inner{max-width:1400px;margin:0 auto;padding:0 40px;}
-  .section-label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--green-mid);font-weight:700;margin-bottom:12px;}
-  .section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:var(--brown-dark);line-height:1.15;margin-bottom:32px;}
-  .section-title span{color:var(--green-mid);font-style:italic;}
-  .pdf-tip{background:rgba(90,138,74,.08);border:1px solid var(--green-light);border-radius:8px;padding:14px 20px;margin-bottom:24px;font-size:.88rem;color:var(--green-deep);display:flex;align-items:center;gap:10px;}
-  .pdf-wrapper{border:2px solid rgba(59,42,26,.12);border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 6px 30px var(--shadow);margin-bottom:40px;}
-  .pdf-toolbar{background:var(--green-deep);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
-  .pdf-toolbar span{color:var(--cream);font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:.8;}
-  .pdf-download{background:var(--accent);color:var(--brown-dark);padding:7px 18px;border-radius:4px;text-decoration:none;font-size:.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:all .2s;}
-  .pdf-download:hover{background:#e8b84d;}
-  .pdf-embed{width:100%;height:780px;border:none;display:block;}
-  .pdf-fallback{display:none;text-align:center;padding:60px 20px;color:var(--brown-mid);}
-  .pdf-fallback .pf-icon{font-size:3rem;margin-bottom:12px;}
+ /* NUEVO ESTILO PARA EL VISOR PDF */
+  .pdf-wrapper {
+    border: 2px solid rgba(59,42,26,.12);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 6px 30px rgba(59,42,26,0.15);
+    margin-bottom: 40px;
+  }
+  .pdf-toolbar {
+    background: var(--green-deep);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pdf-toolbar span {
+    color: var(--cream);
+    font-size: .8rem;
+    font-weight: 700;
+  }
+  /* Esto controla el tamaño en la computadora */
+  .pdf-container {
+    width: 100%;
+    height: 750px; 
+  }
+  .pdf-view-element {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* AJUSTE PARA EL CELULAR */
+  @media(max-width: 900px){
+    .pdf-container {
+      height: 80vh; /* Altura grande en el celu */
+    }
+    #productos .inner {
+      padding: 0; /* Aprovecha todo el ancho del celu */
+    }
+    .pdf-wrapper {
+      margin: 0;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+  }
 
   /* PEDIDO */
   #pedido{background:var(--cream);padding:100px 0;}
@@ -155,23 +188,14 @@
   <div class="feature-item"><span>✅</span> Precios actualizados</div>
 </div>
 
-<section id="productos">
-  <div class="inner">
-    <p class="section-label">Catálogo completo</p>
-    <h2 class="section-title">Nuestros <span>Productos</span></h2>
-    <div class="pdf-tip">
-      💡 <span>Navegá la lista, anotá lo que querés y después <strong>completá el formulario de pedido</strong> más abajo.</span>
-    </div>
-    <div class="pdf-wrapper">
-      <div class="pdf-toolbar">
-        <span>📄 Lista de precios — 18/03/2026</span>
-        <a href="lista.PDF" download class="pdf-download">⬇ Descargar PDF</a>
-      </div>
-      <iframe class="pdf-embed" id="pdfEmbed" src="lista.PDF" title="Lista de precios Don Diego"></iframe>
-      <div class="pdf-fallback" id="pdfFallback">
-        <div class="pf-icon">📄</div>
-        <p>Tu navegador no puede mostrar el PDF directamente.</p>
-        <a href="lista.PDF" download class="btn-primary" style="display:inline-block;margin-top:16px;">⬇ Descargar lista de precios</a>
+data="lista.pdf#toolbar=0&navpanes=0" 
+          type="application/pdf" 
+          class="pdf-view-element">
+          <div class="pdf-fallback-msg">
+            <p>Para ver los precios actualizados:</p>
+            <a href="lista.pdf" target="_blank" class="btn-primary">Ver Catálogo en Pantalla Completa</a>
+          </div>
+        </object>
       </div>
     </div>
   </div>
