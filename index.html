@@ -317,6 +317,7 @@
         <div class="notice-box">
           <div class="notice-item"><span>⚠️</span><span>Los precios están sujetos a modificaciones sin previo aviso. Te recomendamos confirmar el precio final al momento de hacer tu pedido.</span></div>
           <div class="notice-item"><span>🚚</span><span>El costo de envío se calcula según tu zona de entrega. Te lo informamos al confirmar el pedido por WhatsApp.</span></div>
+          <div class="notice-item"><span>📍</span><span><strong>Punto de retiro a confirmar.</strong> En caso de elegir la modalidad de retiro presencial, te informamos la dirección y horarios disponibles al confirmar el pedido.</span></div>
         </div>
       </div>
       <div class="order-form">
@@ -332,7 +333,7 @@
           <select id="entrega" onchange="toggleDir()">
             <option value="">Seleccioná una opción</option>
             <option value="Envío a domicilio">Envío a domicilio</option>
-            <option value="Retiro en tienda">Retiro en tienda</option>
+            <option value="Punto de retiro (a confirmar)">Punto de retiro (a confirmar)</option>
           </select>
         </div>
         <div class="form-group" id="dirGroup" style="display:none"><label>Dirección de entrega</label><input type="text" id="direccion" placeholder="Calle, número, ciudad"></div>
@@ -406,7 +407,7 @@
       <select id="cf-entrega" onchange="toggleCfDir()">
         <option value="">Seleccioná una opción</option>
         <option value="Envío a domicilio">Envío a domicilio</option>
-        <option value="Retiro en tienda">Retiro en tienda</option>
+        <option value="Punto de retiro (a confirmar)">Punto de retiro (a confirmar)</option>
       </select>
     </div>
     <div class="cf-group" id="cfDirGroup" style="display:none">
