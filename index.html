@@ -234,7 +234,7 @@
     /* drawer full width en mobile */
     .cart-drawer{width:100vw;}
     .cf-row{grid-template-columns:1fr;}
-  #nosotros .inner{text-align:center;padding:0 16px;}
+    #nosotros .inner{text-align:center;}
     .about-text{text-align:left;}
     .about-stats{margin:0 auto;}
     .stat-card{text-align:center;}
@@ -264,7 +264,7 @@
   <div class="hero-content">
     <!-- LOGO HERO GRANDE -->
     <img src="logodondiego.png" alt="Don Diego" class="hero-logo-img">
-    <div class="hero-badge">🌱 Lista de precios actualizada al 30/03/2026</div>
+    <div class="hero-badge">🌱 Lista actualizada al 30/03/2026</div>
     <h1 class="hero-title">El sabor de lo natural,<br>directo a tu <em>casa</em></h1>
     <p class="hero-sub">Más de 1.000 productos naturales, orgánicos y saludables.</p>
     <div class="hero-actions">
@@ -333,16 +333,7 @@
         </div>
         <div class="form-group"><label>Teléfono / WhatsApp *</label><input type="tel" id="telefono" placeholder="Ej: 341 555-1234"></div>
         <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="tucorreo@email.com"></div>
-        <div class="form-group">
-          <label>Tipo de entrega</label>
-          <select id="entrega" onchange="toggleDir()">
-            <option value="">Seleccioná una opción</option>
-            <option value="Envío a domicilio">Envío a domicilio</option>
-            <option value="Punto de retiro (a confirmar)">Punto de retiro (a confirmar)</option>
-          </select>
-        </div>
-        <div class="form-group" id="dirGroup" style="display:none"><label>Dirección de entrega</label><input type="text" id="direccion" placeholder="Calle, número, ciudad"></div>
-        <div class="form-group"><label>Tu consulta o pedido</label><textarea id="pedidoTexto" placeholder="Escribinos tu consulta o detallá tu pedido aquí..."></textarea></div>
+        <div class="form-group"><label>Escribinos tu consulta</label><textarea id="pedidoTexto" placeholder="Escribinos tu consulta aquí..."></textarea></div>
         <button class="btn-submit" onclick="enviarPedido()">Enviar por WhatsApp 💬</button>
         <div class="success-msg" id="successMsg"><div class="sm-icon">✅</div><p>¡Mensaje enviado! Te contactamos en breve.</p></div>
       </div>
@@ -422,6 +413,9 @@
     <div class="cf-group">
       <label>Notas adicionales (opcional)</label>
       <textarea id="cf-notas" placeholder="Preferencias, aclaraciones..."></textarea>
+    </div>
+    <div class="notice-box" style="margin-top:4px;">
+      <div class="notice-item"><span>ℹ️</span><span>En caso de faltante de algún producto, te consultaremos si querés reemplazarlo por otro. Si preferís no reemplazarlo, se quitará del pedido y se descontará del precio final.</span></div>
     </div>
   </div>
 
@@ -1737,14 +1731,11 @@ function enviarPedido(){
   const apellido=document.getElementById('apellido').value.trim();
   const tel=document.getElementById('telefono').value.trim();
   if(!nombre||!apellido||!tel){alert('Por favor completá nombre, apellido y teléfono.');return;}
-  const entrega=document.getElementById('entrega').value||'No especificado';
-  const dir=document.getElementById('direccion').value||'';
   const pedido=document.getElementById('pedidoTexto').value||'';
   let msg=`CONSULTA - Don Diego\n\n`;
   msg+=`Nombre: ${nombre} ${apellido}\nTel: ${tel}\n`;
   if(document.getElementById('email').value)msg+=`Email: ${document.getElementById('email').value}\n`;
-  msg+=`Entrega: ${entrega}${dir?' - '+dir:''}\n\n`;
-  if(pedido)msg+=`Consulta:\n${pedido}`;
+  if(pedido)msg+=`\nConsulta:\n${pedido}`;
   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
   document.getElementById('successMsg').style.display='block';
 }
