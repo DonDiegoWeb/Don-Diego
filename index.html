@@ -206,6 +206,10 @@
     margin-bottom: 28px;
   }
 
+
+  .notice-box{background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.4);border-radius:8px;padding:16px 20px;margin-top:32px;display:flex;flex-direction:column;gap:8px;}
+  .notice-item{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;color:var(--brown-mid);line-height:1.5;}
+  .notice-item span:first-child{font-size:1rem;flex-shrink:0;}
   @media(max-width:900px){
     nav{padding:20px 24px;}
     .nav-links{display:none;}
@@ -306,6 +310,10 @@
         <div class="oi-item"><div class="oi-icon">📋</div><div class="oi-text"><h4>2. Completá tus datos</h4><p>Una vez armado el carrito, ingresá tu nombre, teléfono y forma de entrega para que podamos contactarte.</p></div></div>
         <div class="oi-item"><div class="oi-icon">💬</div><div class="oi-text"><h4>3. Enviá por WhatsApp</h4><p>Con un clic, tu pedido completo llega a nuestro WhatsApp. Te confirmamos disponibilidad y coordinamos.</p></div></div>
         <div class="oi-item"><div class="oi-icon">💳</div><div class="oi-text"><h4>Formas de pago</h4><p>Efectivo, transferencia bancaria o MercadoPago. ¡Como prefieras!</p></div></div>
+        <div class="notice-box">
+          <div class="notice-item"><span>⚠️</span><span>Los precios están sujetos a modificaciones sin previo aviso. Te recomendamos confirmar el precio final al momento de hacer tu pedido.</span></div>
+          <div class="notice-item"><span>🚚</span><span>El costo de envío se calcula según tu zona de entrega. Te lo informamos al confirmar el pedido por WhatsApp.</span></div>
+        </div>
       </div>
       <div class="order-form">
         <h3>¿Tenés dudas o preferís escribirnos?</h3>
