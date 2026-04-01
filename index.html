@@ -42,9 +42,7 @@
   .btn-secondary{border:2px solid rgba(249,243,232,.4);color:var(--cream);padding:16px 36px;border-radius:4px;text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;}
   .btn-secondary:hover{border-color:var(--cream);background:rgba(249,243,232,.1);}
   .hero-bar{position:absolute;bottom:0;left:0;width:100%;height:5px;background:var(--brown-dark);z-index:2;}
-  .features{background:var(--brown-dark);display:flex;justify-content:center;flex-wrap:wrap;}
-  .feature-item{display:flex;align-items:center;gap:12px;padding:22px 40px;border-right:1px solid rgba(249,243,232,.1);color:var(--cream);font-size:.85rem;letter-spacing:1px;text-transform:uppercase;font-weight:700;}
-  .feature-item:last-child{border-right:none;}
+
   /* PRODUCTOS */
   #productos{background:var(--white);padding:80px 0;}
   #productos .inner{max-width:1400px;margin:0 auto;padding:0 40px;}
@@ -207,6 +205,13 @@
   }
 
 
+
+  .ticker-wrap{background:var(--brown-dark);overflow:hidden;white-space:nowrap;border-bottom:1px solid rgba(249,243,232,.08);}
+  .ticker-track{display:inline-flex;animation:ticker 30s linear infinite;}
+  .ticker-track:hover{animation-play-state:paused;}
+  .ticker-item{display:inline-flex;align-items:center;gap:10px;padding:18px 40px;color:var(--cream);font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;border-right:1px solid rgba(249,243,232,.12);}
+  .ticker-item span:first-child{font-size:1rem;}
+  @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
   .notice-box{background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.4);border-radius:8px;padding:16px 20px;margin-top:32px;display:flex;flex-direction:column;gap:8px;}
   .notice-item{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;color:var(--brown-mid);line-height:1.5;}
   .notice-item span:first-child{font-size:1rem;flex-shrink:0;}
@@ -220,7 +225,6 @@
     .form-row{grid-template-columns:1fr;}
     .order-form{padding:28px 20px;}
     footer{padding:40px 24px;}
-    .features{display:none;}
     /* ocultar chips, mostrar select en mobile */
     .filter-bar{display:none;}
     .filter-select{display:block;}
@@ -267,11 +271,10 @@
   <div class="hero-bar"></div>
 </header>
 
-<div class="features">
-  <div class="feature-item"><span>🌿</span> +1000 Productos</div>
-  <div class="feature-item"><span>🚚</span> Envío a domicilio</div>
-  <div class="feature-item"><span>💬</span> Atención por WhatsApp</div>
-  <div class="feature-item"><span>✅</span> Precios actualizados</div>
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <div class="ticker-item"><span>🌿</span><span>+1000 Productos</span></div><div class="ticker-item"><span>🚚</span><span>Envío a domicilio</span></div><div class="ticker-item"><span>💬</span><span>Atención por WhatsApp</span></div><div class="ticker-item"><span>✅</span><span>Precios actualizados</span></div><div class="ticker-item"><span>🌱</span><span>100% Natural</span></div><div class="ticker-item"><span>💳</span><span>Efectivo · Transferencia · MercadoPago</span></div><div class="ticker-item"><span>📦</span><span>Retiro en tienda disponible</span></div><div class="ticker-item"><span>⚠️</span><span>Precios sujetos a cambios</span></div><div class="ticker-item"><span>🌿</span><span>+1000 Productos</span></div><div class="ticker-item"><span>🚚</span><span>Envío a domicilio</span></div><div class="ticker-item"><span>💬</span><span>Atención por WhatsApp</span></div><div class="ticker-item"><span>✅</span><span>Precios actualizados</span></div><div class="ticker-item"><span>🌱</span><span>100% Natural</span></div><div class="ticker-item"><span>💳</span><span>Efectivo · Transferencia · MercadoPago</span></div><div class="ticker-item"><span>📦</span><span>Retiro en tienda disponible</span></div><div class="ticker-item"><span>⚠️</span><span>Precios sujetos a cambios</span></div>
+  </div>
 </div>
 
 <section id="productos">
