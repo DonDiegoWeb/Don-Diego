@@ -216,6 +216,22 @@
   .notice-item{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;color:var(--brown-mid);line-height:1.5;}
   .notice-item span:first-child{font-size:1rem;flex-shrink:0;}
 
+
+  /* SLIDER PRODUCTOS DESTACADOS */
+  .featured-slider{position:relative;overflow:hidden;border-radius:16px;box-shadow:0 12px 50px var(--shadow);}
+  .featured-slides{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);}
+  .featured-slide{min-width:100%;display:grid;grid-template-columns:1fr 1fr;}
+  .slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;transition:background .2s;backdrop-filter:blur(4px);}
+  .slider-btn:hover{background:rgba(255,255,255,.4);}
+  .slider-prev{left:16px;}
+  .slider-next{right:16px;}
+  .slider-dots{display:flex;justify-content:center;gap:8px;margin-top:16px;}
+  .slider-dot{width:8px;height:8px;border-radius:50%;background:var(--brown-light);border:none;cursor:pointer;transition:all .2s;padding:0;}
+  .slider-dot.active{background:var(--green-deep);width:24px;border-radius:4px;}
+  @media(max-width:900px){
+    .featured-slide{grid-template-columns:1fr;}
+  }
+
   /* PRODUCTO DESTACADO */
   #destacado{background:var(--cream);padding:60px 0 0;}
   #destacado .inner{max-width:1100px;margin:0 auto;padding:0 40px;}
@@ -306,26 +322,55 @@
 </div>
 
 
+
 <section id="destacado">
   <div class="inner">
     <p class="section-label">Especial Don Diego</p>
-    <h2 class="section-title">Producto <span>Destacado</span></h2>
-    <div class="featured-card">
-      <div class="featured-img">
-        <img src="bandeja1.png" alt="Bandeja Dulce Don Diego">
-        <span class="featured-badge">⭐ Destacado</span>
-      </div>
-      <div class="featured-info">
-        <p class="featured-line">Línea Cápsula Gourmet</p>
-        <h3 class="featured-name">Bandeja Dulce</h3>
-        <p class="featured-desc">Una selección especial de frutos secos, chocolates y snacks premium presentados en una elegante bandeja. Ideal para regalar o disfrutar en casa.</p>
-        <div style="display:flex;align-items:center;gap:40px;margin-bottom:32px;">
-          <div class="featured-price" style="margin-bottom:0;"><span>Precio</span>$20.000</div>
-          <img src="logogourmet.png" alt="Cápsula Gourmet" style="height:80px;object-fit:contain;flex-shrink:0;">
+    <h2 class="section-title">Productos <span>Destacados</span></h2>
+    <div class="featured-slider">
+      <div class="featured-slides" id="featuredSlides">
+
+        <!-- SLIDE 1: BANDEJA -->
+        <div class="featured-slide">
+          <div class="featured-img">
+            <img src="bandeja1.png" alt="Bandeja Dulce">
+            <span class="featured-badge">⭐ Destacado</span>
+          </div>
+          <div class="featured-info">
+            <p class="featured-line">Línea Cápsula Gourmet</p>
+            <h3 class="featured-name">Bandeja Dulce</h3>
+            <p class="featured-desc">Una selección especial de frutos secos, chocolates y snacks premium presentados en una elegante bandeja. Ideal para regalar o disfrutar en casa.</p>
+            <div style="display:flex;align-items:center;gap:40px;margin-bottom:32px;">
+              <div class="featured-price" style="margin-bottom:0;"><span>Precio</span>$20.000</div>
+              <img src="logogourmet.png" alt="Cápsula Gourmet" style="height:80px;object-fit:contain;flex-shrink:0;">
+            </div>
+            <a href="https://wa.me/5493412299911?text=Hola%2C%20quiero%20consultar%20por%20la%20Bandeja%20Dulce%20Don%20Diego" target="_blank" class="btn-featured">Consultar por WhatsApp →</a>
+          </div>
         </div>
-        <a href="https://wa.me/5493412299911?text=Hola%2C%20quiero%20consultar%20por%20la%20Bandeja%20Dulce%20Don%20Diego" target="_blank" class="btn-featured">Consultar por WhatsApp →</a>
+
+        <!-- SLIDE 2: ACEITE -->
+        <div class="featured-slide">
+          <div class="featured-info" style="background:#4a3520;">
+            <p class="featured-line">Línea Cápsula Gourmet</p>
+            <h3 class="featured-name">Aceite de Oliva<br>Extra Virgen x500ml</h3>
+            <p class="featured-desc">Aceite de oliva extra virgen de primera prensada en frío, proveniente de La Rioja. Ideal para realzar ensaladas, pastas y todo tipo de preparaciones.</p>
+            <div style="display:flex;align-items:center;gap:40px;margin-bottom:32px;">
+              <div class="featured-price" style="margin-bottom:0;"><span>Precio</span>$16.000</div>
+              <img src="logogourmet.png" alt="Cápsula Gourmet" style="height:80px;object-fit:contain;flex-shrink:0;">
+            </div>
+            <a href="https://wa.me/5493412299911?text=Hola%2C%20quiero%20consultar%20por%20el%20Aceite%20de%20Oliva%20Extra%20Virgen%20C%C3%A1psula%20Gourmet" target="_blank" class="btn-featured">Consultar por WhatsApp →</a>
+          </div>
+          <div class="featured-img">
+            <img src="aceite.png" alt="Aceite de Oliva Extra Virgen">
+            <span class="featured-badge">⭐ Destacado</span>
+          </div>
+        </div>
+
       </div>
+      <button class="slider-btn slider-prev" onclick="slideMove(-1)">‹</button>
+      <button class="slider-btn slider-next" onclick="slideMove(1)">›</button>
     </div>
+    <div class="slider-dots" id="sliderDots"></div>
   </div>
 </section>
 
@@ -1804,6 +1849,26 @@ function showToast(msg){
 
 buildFilters();
 renderProducts();
+
+// ── SLIDER ────────────────────────────────────────────────────────────────────
+let slideIndex = 0;
+const slides = document.querySelectorAll('.featured-slide');
+function buildDots(){
+  const dots = document.getElementById('sliderDots');
+  if(!dots) return;
+  dots.innerHTML = [...slides].map((_,i)=>`<button class="slider-dot${i===0?' active':''}" onclick="goSlide(${i})"></button>`).join('');
+}
+function updateSlider(){
+  document.getElementById('featuredSlides').style.transform=`translateX(-${slideIndex*100}%)`;
+  document.querySelectorAll('.slider-dot').forEach((d,i)=>d.classList.toggle('active',i===slideIndex));
+}
+function slideMove(dir){
+  slideIndex=(slideIndex+dir+slides.length)%slides.length;
+  updateSlider();
+}
+function goSlide(i){slideIndex=i;updateSlider();}
+buildDots();
+
 </script>
 </body>
 </html>
