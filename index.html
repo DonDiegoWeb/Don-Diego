@@ -132,6 +132,11 @@
   .cf-group textarea{resize:vertical;min-height:65px;}
   .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   /* footer */
+
+  .shipping-bar{margin-bottom:12px;padding:10px 14px;border-radius:8px;background:rgba(59,42,26,.06);border:1px solid rgba(59,42,26,.1);font-size:.78rem;color:var(--brown-mid);font-weight:700;}
+  .shipping-bar.free{background:rgba(90,138,74,.12);border-color:var(--green-mid);color:var(--green-deep);}
+  .shipping-progress{height:4px;border-radius:4px;background:rgba(59,42,26,.1);margin-top:6px;overflow:hidden;}
+  .shipping-progress-bar{height:100%;background:var(--green-mid);border-radius:4px;transition:width .4s ease;}
   .cart-footer{padding:12px 24px 18px;border-top:1px solid rgba(59,42,26,.1);flex-shrink:0;}
   .cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
   .ct-label{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--brown-mid);font-weight:700;}
@@ -180,6 +185,13 @@
   footer{background:var(--brown-dark);padding:60px;text-align:center;}
   .footer-logo{font-family:'Playfair Display',serif;color:#111111;font-size:2rem;margin-bottom:16px;display:block;font-weight:700;}
   .footer-logo span{color:#111111;font-style:normal;text-transform:uppercase;}
+
+  .social-links{display:flex;justify-content:center;gap:16px;margin-bottom:24px;}
+  .social-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:40px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:all .3s;}
+  .social-btn.ig{background:rgba(249,243,232,.08);color:var(--cream);border:1px solid rgba(249,243,232,.2);}
+  .social-btn.fb{background:rgba(249,243,232,.08);color:var(--cream);border:1px solid rgba(249,243,232,.2);}
+  .social-btn:hover{background:var(--accent);color:var(--brown-dark);border-color:var(--accent);}
+  .social-btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
   .footer-tagline{color:rgba(249,243,232,.5);font-size:.85rem;margin-bottom:32px;letter-spacing:1px;}
   .footer-divider{border:none;border-top:1px solid rgba(249,243,232,.1);margin:28px auto;max-width:200px;}
   .footer-copy{color:rgba(249,243,232,.4);font-size:.78rem;letter-spacing:1px;}
@@ -417,7 +429,7 @@
         <div class="oi-item"><div class="oi-icon">💳</div><div class="oi-text"><h4>Formas de pago</h4><p>Efectivo, transferencia bancaria o MercadoPago. ¡Como prefieras!</p></div></div>
         <div class="notice-box">
           <div class="notice-item"><span>⚠️</span><span>Los precios están sujetos a modificaciones sin previo aviso. Te recomendamos confirmar el precio final al momento de hacer tu pedido.</span></div>
-          <div class="notice-item"><span>🚚</span><span>El costo de envío se calcula según tu zona de entrega. Te lo informamos al confirmar el pedido por WhatsApp.</span></div>
+          <div class="notice-item"><span>🚚</span><span>El costo de envío se calcula según tu zona de entrega. Te lo informamos al confirmar el pedido por WhatsApp. <strong>¡Envío gratis en pedidos a partir de $35.000!</strong></span></div>
           <div class="notice-item"><span>📍</span><span><strong>Punto de retiro a confirmar.</strong> En caso de elegir la modalidad de retiro presencial, te informamos la dirección y horarios disponibles al confirmar el pedido.</span></div>
           <div class="notice-item"><span>💼</span><span><strong>¿Querés precio mayorista?</strong> Consultanos por WhatsApp y te asesoramos.</span></div>
         </div>
@@ -518,6 +530,7 @@
 
   <!-- FOOTER -->
   <div class="cart-footer">
+    <div class="shipping-bar" id="shippingBar"></div>
     <div class="cart-total-row" id="cartTotalRow">
       <span class="ct-label">Total</span>
       <span class="ct-amount" id="cartTotal">$0</span>
@@ -543,7 +556,17 @@
   <!-- LOGO FOOTER -->
   <img src="logodondiego.png" alt="Don Diego" class="footer-logo-img">
   <span class="footer-logo">DON <span>DIEGO</span></span>
-  <p class="footer-tagline">Productos naturales con amor local · Rosario, Argentina</p>
+  <div class="social-links">
+  <a href="https://www.instagram.com/dondiego_ok/" target="_blank" rel="noopener" class="social-btn ig">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    Instagram
+  </a>
+  <a href="https://www.facebook.com/profile.php?id=100067985602175" target="_blank" rel="noopener" class="social-btn fb">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    Facebook
+  </a>
+</div>
+<p class="footer-tagline">Productos naturales con amor local · Rosario, Argentina</p>
   <hr class="footer-divider">
   <p class="footer-copy">© 2026 Don Diego Productos Naturales · Todos los derechos reservados</p>
 </footer>
@@ -1744,6 +1767,20 @@ function updateCartUI(){
   countEl.style.display=count>0?'flex':'none';
   document.getElementById('cartTotal').textContent=fmt(total);
   document.getElementById('btnGoStep2').disabled=count===0;
+  // Shipping bar
+  const FREE_SHIPPING=35000;
+  const shippingBar=document.getElementById('shippingBar');
+  if(shippingBar){
+    if(total>=FREE_SHIPPING){
+      shippingBar.className='shipping-bar free';
+      shippingBar.innerHTML='🚚 ¡Envío gratis! Tu pedido supera los $35.000';
+    } else {
+      const remaining=FREE_SHIPPING-total;
+      const pct=Math.min(100,Math.round((total/FREE_SHIPPING)*100));
+      shippingBar.className='shipping-bar';
+      shippingBar.innerHTML=`Te faltan ${fmt(remaining)} para envío gratis<div class="shipping-progress"><div class="shipping-progress-bar" style="width:${pct}%"></div></div>`;
+    }
+  }
   const container=document.getElementById('cartItems');
   if(items.length===0){
     container.innerHTML='<div class="cart-empty"><div class="ce-icon">🌿</div><p>Tu carrito está vacío.<br>¡Agregá productos para empezar!</p></div>';
